@@ -13,6 +13,7 @@ public static class Financial
         //Income Statement
         var url = "https://finance.yahoo.com/quote/AAPL/financials";
         var httpClient = new HttpClient();
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "teste");
         var html = httpClient.GetStringAsync(url).Result;
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(html);

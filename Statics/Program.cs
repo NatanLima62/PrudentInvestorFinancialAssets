@@ -8,6 +8,7 @@ public static class Program
     {
         var url = "https://finance.yahoo.com/quote/AAPL/key-statistics";
         var httpClient = new HttpClient();
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "teste");
         var html = httpClient.GetStringAsync(url).Result;
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(html);

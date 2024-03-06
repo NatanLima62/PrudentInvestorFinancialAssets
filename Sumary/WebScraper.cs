@@ -9,6 +9,7 @@ public static class WebScraper
         //Url pode ser parametrizada
         var url = "https://finance.yahoo.com/quote/AAPL";
         var httpClient = new HttpClient();
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "teste");
         var html = httpClient.GetStringAsync(url).Result;
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(html);

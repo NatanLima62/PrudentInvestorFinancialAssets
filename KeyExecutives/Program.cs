@@ -8,6 +8,7 @@ public static class KeyExecutives
     {
         var url = "https://finance.yahoo.com/quote/AAPL/profile";
         var httpClient = new HttpClient();
+        httpClient.DefaultRequestHeaders.Add("User-Agent", "teste");
         var html = httpClient.GetStringAsync(url).Result;
         var htmlDocument = new HtmlDocument();
         htmlDocument.LoadHtml(html);
@@ -20,6 +21,7 @@ public static class KeyExecutives
                 node.GetAttributeValue("class", "").Equals("Ta(start)") || 
                 node.GetAttributeValue("class", "").Equals("Ta(start) W(45%)") ||
                 node.GetAttributeValue("class", "").Equals("Ta(end)"))
+            .Select(node => node.InnerText)
             .ToList();
     }
 }
